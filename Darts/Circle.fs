@@ -5,8 +5,8 @@ open Microsoft.Xna.Framework.Graphics
 open System
 
 // Ported from C# http://www.adamkdean.co.uk/circle-primitive-class-for-xna-monogame
-type Circle(x : float, y : float, radius: float, graphics : GraphicsDeviceManager) =
-    let color = Color.White
+type Circle(x : float, y : float, radius: float, color : Color, graphics : GraphicsDeviceManager) =
+    let color = color
     let calculatePointCount = (int (Math.Ceiling(radius * Math.PI)))
     let pointTheta = (Math.PI * (float 2)) / (float (calculatePointCount - 1))
     let vertices = [ for i in 0 .. calculatePointCount -> VertexPositionColor(Vector3((float32 (x + (Math.Sin(pointTheta * (float i)) * radius))), ((float32 (y + (Math.Cos(pointTheta * (float i)) * radius)))), 0.0f), color)] |> List.toArray
