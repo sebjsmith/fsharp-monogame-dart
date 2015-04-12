@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Circle.fs" />
+    <Compile Include="CircleWithSegments.fs" />
     <Compile Include="DartsGame.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />

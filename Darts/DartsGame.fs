@@ -4,6 +4,7 @@ open Microsoft.Xna.Framework
 open Microsoft.Xna.Framework.Graphics
 
 open Circle
+open CircleWithSegments
  
 type DartsGame () as x =
     inherit Game()
@@ -43,19 +44,19 @@ type DartsGame () as x =
             do outerbull.Draw()
 
         for i in board * outerBullRatio + 1.0 .. board * innerTrebleRatio do
-            let innerTreble = new Circle(board, board, i, Color.LightGreen, graphics)
+            let innerTreble = new CircleWithSegments(board, board, i, Color.Black, Color.White, graphics)
             do innerTreble.Draw()
 
         for i in board * innerTrebleRatio + 1.0 .. board * outerTrebleRatio do
-            let treble = new Circle(board, board, i, Color.SkyBlue, graphics)
+            let treble = new CircleWithSegments(board, board, i, Color.Red, Color.Green, graphics)
             do treble.Draw()
 
         for i in board * outerTrebleRatio + 1.0 .. board * innerDoubleRatio do
-            let innerDouble = new Circle(board, board, i, Color.LightGreen, graphics)
+            let innerDouble = new CircleWithSegments(board, board, i, Color.Black, Color.White, graphics)
             do innerDouble.Draw()
 
         for i in board * innerDoubleRatio + 1.0 .. board * outerDoubleRatio do
-            let double = new Circle(board, board, i, Color.SkyBlue, graphics)
+            let double = new CircleWithSegments(board, board, i, Color.Red, Color.Green, graphics)
             do double.Draw()
 
         for i in board * outerDoubleRatio + 1.0 .. board do
