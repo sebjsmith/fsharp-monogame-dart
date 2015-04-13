@@ -12,7 +12,7 @@ type DartsGame () as x =
     let board = 500.0
 
     let bullRatio = 0.02
-    let outerBullRatio = 0.08
+    let outerBullRatio = 0.05
     let innerTrebleRatio = 0.46
     let outerTrebleRatio = 0.48
     let innerDoubleRatio = 0.74
