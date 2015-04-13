@@ -18,16 +18,16 @@ let get_choice n =
 type CircleWithSegments(x : float, y : float, radius: float, firstColor : Color, secondColor : Color, graphics : GraphicsDeviceManager) =
     let firstColor = firstColor
     let secondColor = secondColor
-    let calculatePointCount = (int (Math.Ceiling(radius * Math.PI)))
-    let segmentPointCount = calculatePointCount / 20
+    let calculatePointCount = radius * Math.PI
+    let segmentPointCount = calculatePointCount / 20.0
 
     let segmentColor n =
-        match get_choice (n/segmentPointCount) with
+        match get_choice (int ((n+calculatePointCount/40.0)/segmentPointCount)) with
         | Even -> firstColor
         | Odd -> secondColor
 
-    let pointTheta = (Math.PI * (float 2)) / (float (calculatePointCount - 1))
-    let vertices = [ for i in 0 .. calculatePointCount -> VertexPositionColor(Vector3((float32 (x + (Math.Sin(pointTheta * (float i)) * radius))), ((float32 (y + (Math.Cos(pointTheta * (float i)) * radius)))), 0.0f), segmentColor(i))] |> List.toArray
+    let pointTheta = (Math.PI * 2.0) / (calculatePointCount - 1.0)
+    let vertices = [ for i in 0.0 .. calculatePointCount -> VertexPositionColor(Vector3((float32 (x + (Math.Sin(pointTheta * i) * radius))), ((float32 (y + (Math.Cos(pointTheta * i) * radius)))), 0.0f), segmentColor(i))] |> List.toArray
 
     member c.Draw() =
         let mutable effect = new BasicEffect(graphics.GraphicsDevice)
